@@ -1,0 +1,115 @@
+body,
+html {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    width: 100%;
+    height: 500px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flipper-main {
+    height: 300px;
+    aspect-ratio: 9/16;
+    background-color: #ccc;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    perspective: 3000px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
+}
+
+.flipper-con {
+    width: 100%;
+    height: 50%;
+    flex: 1;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+@keyframes flip-up {
+    0% {
+        transform: rotateX(0deg);
+        opacity: 1;
+        visibility: visible;
+        animation-timing-function: ease-in;
+    }
+
+    49.9% {
+        transform: rotateX(-89.9deg);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    50%,
+    100% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes flip-down {
+
+    0%,
+    49.9% {
+        transform: rotateX(90deg);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    50% {
+        transform: rotateX(90deg);
+        opacity: 1;
+        visibility: visible;
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.flip-card {
+    height: 100%;
+    container-type: size;
+    text-align: center;
+    background-color: red;
+    overflow: hidden;
+}
+
+.flipper-up {
+    transform-origin: bottom center;
+    animation: flip-up .5s forwards;
+}
+
+.flipper-down {
+    transform-origin: top center;
+    animation: flip-down .5s forwards;
+}
+
+.flip-card p {
+    font-size: 200cqh;
+    line-height: 1;
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.flipper-down .flip-card p {
+    transform: translateY(-50%);
+}
